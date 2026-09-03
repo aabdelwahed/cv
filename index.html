@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed Abdelwahed - CV</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #0284c7;
+            --accent: #f59e0b;
+            --text-dark: #1f2937;
+            --text-light: #4b5563;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Header Styles */
+        header {
+            text-align: center;
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        header h2 {
+            color: var(--secondary);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .contact-info a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-info a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        /* Section Layouts */
+        section {
+            margin-bottom: 2.5rem;
+        }
+
+        h3.section-title {
+            color: var(--primary);
+            font-size: 1.3rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        p.summary {
+            color: var(--text-light);
+            text-align: justify;
+        }
+
+        /* Interactive Skills Filter */
+        .skills-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-btn {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-card {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-left: 4px solid var(--secondary);
+            border-radius: 4px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .skill-card h4 {
+            color: var(--primary);
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .skill-card p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* Work & Projects Experience Styles */
+        .exp-item, .project-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .exp-item:last-child, .project-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .exp-header, .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem;
+        }
+
+        .exp-role {
+            font-weight: bold;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+
+        .exp-company, .project-title {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .exp-date {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 1.25rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        ul li::before {
+            content: "•";
+            color: var(--secondary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        /* Interactive Collapsible Certifications */
+        .cert-category {
+            margin-bottom: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .cert-toggle {
+            width: 100%;
+            background: var(--bg-light);
+            border: none;
+            padding: 1rem;
+            text-align: left;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cert-toggle::after {
+            content: '▼';
+            font-size: 0.8rem;
+            transition: transform 0.2s;
+        }
+
+        .cert-category.active .cert-toggle::after {
+            transform: rotate(180deg);
+        }
+
+        .cert-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: var(--white);
+        }
+
+        .cert-category.active .cert-content {
+            max-height: 500px; /* high enough to contain content */
+        }
+
+        .cert-list {
+            padding: 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .cert-list li {
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Matrix */
+        @media (max-width: 768px) {
+            .container { padding: 1.5rem; }
+            header h1 { font-size: 2rem; }
+            .exp-header, .project-header { flex-direction: column; gap: 0.25rem; }
+            .exp-date { margin-top: 0.25rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header Section -->
+    <header>
+        <h1>Ahmed Abdelwahed</h1>
+        <h2>Cloud & Infrastructure Specialist | Microsoft Certified Trainer (MCT)</h2>
+        <div class="contact-info">
+            <span>📍 Oman</span>
+            <span>📞 +968 720 720 85</span>
+            <span>🇪🇬 Egyptian</span>
+            <span>📧 <a href="mailto:ahmed@abdelwahed.me">ahmed@abdelwahed.me</a></span>
+            <span>🌐 <a href="http://abdelwahed.me" target="_blank">Technical Blog</a></span>
+            <span>🔗 <a href="#" target="_blank">LinkedIn</a></span>
+            <span>🎖️ <a href="#" target="_blank">Skill Badges</a></span>
+        </div>
+    </header>
+
+    <!-- Professional Summary -->
+    <section>
+        <h3 class="section-title">Professional Summary</h3>
+        <p class="summary">
+            Cloud & Infrastructure Specialist and Microsoft Certified Trainer with 15+ years of hands-on experience designing, operating, securing, and migrating enterprise infrastructure — and 250+ delivered courses turning that experience into job-ready skills for professionals across the Gulf region. Certified at Expert level by Microsoft (Azure Solutions Architect, DevOps Engineer, Cybersecurity Architect), with complementary credentials from AWS, Google, VMware, Red Hat, and the Linux Foundation. Equally effective building production environments and teaching them — every course is backed by real labs and production-grade configurations.
+        </p>
+    </section>
+
+    <!-- Interactive Skills Section -->
+    <section>
+        <h3 class="section-title">Core Skills</h3>
+        <div class="skills-filter">
+            <button class="filter-btn active" onclick="filterSkills('all')">All Skills</button>
+            <button class="filter-btn" onclick="filterSkills('cloud')">Cloud & DevOps</button>
+            <button class="filter-btn" onclick="filterSkills('infra')">Infrastructure & Systems</button>
+            <button class="filter-btn" onclick="filterSkills('security')">Security</button>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-card" data-category="cloud">
+                <h4>Cloud Platforms</h4>
+                <p>Microsoft Azure, AWS, Google Cloud — architecture, administration, migration.</p>
+            </div>
+            <div class="skill-card" data-category="infra">
+                <h4>Infrastructure</h4>
+                <p>Windows Server, Active Directory, Exchange Server, Hyper-V, VMware vSphere, Red Hat Linux.</p>
+            </div>
+            <div class="skill-card" data-category="infra">
